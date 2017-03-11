@@ -1,4 +1,6 @@
 # travis-github-status
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/faceyspacey/travis-github-status.svg)](https://greenkeeper.io/)
 Use this as your primary means of running tests, linting and flow type checking
 in your `.travis.yml` file. If any tools have errors, they will properly insure an an exit code of `1` is used.
 
