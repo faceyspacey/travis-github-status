@@ -9,7 +9,7 @@ const cli = new eslint.CLIEngine()
 
 
 const setStatuses = () => {
-  const gh = new Github()
+  const gh = new Github
   const status = authenticateWithGithub(gh, process.env)
 
   if (shouldSet('lint')) setLintStatus(gh, status)
