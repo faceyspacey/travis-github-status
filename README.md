@@ -21,7 +21,7 @@ node_js:
 cache: yarn
 
 script:
-  - travis-script lint flow jest #omit tools you dont want statuses for
+  - node_modules/.bin/travis-script lint flow jest #omit tools you dont want statuses for
 ```
 
 ## Contributing
