@@ -23,6 +23,7 @@ cache: yarn
 script:
   - node_modules/.bin/travis-script lint flow jest #omit tools you don't want statuses for
 ```
+*new tools: `snyk`, `codeclimate`. Just list them, for example, after `jest` above. You will need to add their tokens to Travis*
 
 ## Contributing
 Feel free to add more services such as Typescript, other test runners, etc. One thing it needs to do

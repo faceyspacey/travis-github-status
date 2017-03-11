@@ -15,6 +15,8 @@ const setStatuses = () => {
   if (shouldSet('lint')) setLintStatus(gh, status)
   if (shouldSet('flow')) setFlowStatus(gh, status)
   if (shouldSet('jest')) setJestStatus(gh, status)
+  if (shouldSet('snyk')) setSnykStatus(gh, status)
+  if (shoultSet('codeclimate')) codeClimateCoverage()
 }
 
 
@@ -111,6 +113,15 @@ const setJestStatus = (gh, status) => {
 }
 
 
+const setSnykStatus = (gh, status) => {
+  const ret = spawn('cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter')
+  const success = ret.status === 0
+  const description = success ? 'none' : 'RED ALERT!'
+
+  setStatus(gh, status, 'Snyk Vulnerabilities', description, success)
+}
+
+
 const setStatus = (gh, status, context, description, success) => {
   gh.repos.createStatus({
     ...status,
@@ -130,4 +141,9 @@ const setStatus = (gh, status, context, description, success) => {
   }
 }
 
+
+const codeClimateCoverage = () =>
+  exec('cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter')
+
+  
 setStatuses()
