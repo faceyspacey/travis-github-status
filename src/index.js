@@ -144,6 +144,7 @@ const setStatus = (gh, status, context, description, success) => {
 
 const codeClimateCoverage = () =>
   exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
+  && console.log('Code Climate: success!')
 
 
 if (process.env.NODE_ENV !== 'test') {
