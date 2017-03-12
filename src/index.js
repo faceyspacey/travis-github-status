@@ -15,10 +15,12 @@ const setStatuses = () => {
   if (shouldSet('lint')) setLintStatus(gh, status)
   if (shouldSet('flow')) setFlowStatus(gh, status)
   if (shouldSet('jest')) setJestStatus(gh, status)
+  if (shouldSet('snyk')) setSnykStatus(gh, status)
+  if (shouldSet('codeclimate')) codeClimateCoverage()
 }
 
 
-const shouldSet = tool =>
+export const shouldSet = tool =>
   process.argv.indexOf(tool) > -1
 
 
@@ -81,7 +83,7 @@ const setLintStatus = (gh, status) => {
 
 
 const setFlowStatus = (gh, status) => {
-  const { stdout } = spawn('./node_modules/.bin/flow', ['check'], { encoding: 'utf8' })
+  const { stdout } = spawn('node_modules/.bin/flow', ['check'], { encoding: 'utf8' })
   const lines = stdout.split('\n')
   const lastLine = lines[lines.length - 2]
   const errorCount = parseInt(lastLine.replace('Found ', ''))
@@ -95,7 +97,7 @@ const setFlowStatus = (gh, status) => {
 
 
 const setJestStatus = (gh, status) => {
-  const { stderr } = spawn('./node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
+  const { stderr } = spawn('node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
 
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
   const [passedCount, testCount] = regex
@@ -108,6 +110,15 @@ const setJestStatus = (gh, status) => {
   setStatus(gh, status, 'Jest Tests', description, success)
 
   console.log(stderr)
+}
+
+
+const setSnykStatus = (gh, status) => {
+  const ret = spawn('node', ['node_modules/snyk/cli/index.js', 'test'])
+  const success = parseInt(ret.status) === 0
+  const description = success ? 'none' : 'RED ALERT!'
+
+  setStatus(gh, status, 'Snyk Vulnerabilities', description, success)
 }
 
 
@@ -130,4 +141,12 @@ const setStatus = (gh, status, context, description, success) => {
   }
 }
 
-setStatuses()
+
+const codeClimateCoverage = () =>
+  exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
+  && console.log('Code Climate: success!')
+
+
+if (process.env.NODE_ENV !== 'test') {
+  setStatuses()
+}

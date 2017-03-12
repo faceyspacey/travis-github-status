@@ -1,0 +1,9 @@
+language: node_js
+
+node_js:
+  - stable
+
+cache: yarn
+
+script:
+  - node dist/index.js lint flow jest snyk codeclimate # git.repos.createSatus(error count 4 tool)
