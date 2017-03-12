@@ -83,7 +83,7 @@ const setLintStatus = (gh, status) => {
 
 
 const setFlowStatus = (gh, status) => {
-  const { stdout } = spawn('./node_modules/.bin/flow', ['check'], { encoding: 'utf8' })
+  const { stdout } = spawn('node_modules/.bin/flow', ['check'], { encoding: 'utf8' })
   const lines = stdout.split('\n')
   const lastLine = lines[lines.length - 2]
   const errorCount = parseInt(lastLine.replace('Found ', ''))
@@ -97,7 +97,7 @@ const setFlowStatus = (gh, status) => {
 
 
 const setJestStatus = (gh, status) => {
-  const { stderr } = spawn('./node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
+  const { stderr } = spawn('node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
 
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
   const [passedCount, testCount] = regex
