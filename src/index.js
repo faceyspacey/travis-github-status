@@ -16,7 +16,7 @@ const setStatuses = () => {
   if (shouldSet('flow')) setFlowStatus(gh, status)
   if (shouldSet('jest')) setJestStatus(gh, status)
   if (shouldSet('snyk')) setSnykStatus(gh, status)
-  if (shoultSet('codeclimate')) codeClimateCoverage()
+  if (shouldSet('codeclimate')) codeClimateCoverage()
 }
 
 
