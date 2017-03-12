@@ -6,4 +6,4 @@ node_js:
 cache: yarn
 
 script:
-  - node src/index.js lint flow jest snyk codeclimate # git.repos.createSatus(error count 4 tool)
+  - node dist/index.js lint flow jest snyk codeclimate # git.repos.createSatus(error count 4 tool)
