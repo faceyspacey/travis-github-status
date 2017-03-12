@@ -114,7 +114,7 @@ const setJestStatus = (gh, status) => {
 
 
 const setSnykStatus = (gh, status) => {
-  const ret = spawn('./node_modules/travis-github-status/.bin/snyk')
+  const ret = spawn('node', ['node_modules/snyk/cli/index.js', 'test'])
   const success = parseInt(ret.status) === 0
   const description = success ? 'none' : 'RED ALERT!'
 
@@ -143,7 +143,7 @@ const setStatus = (gh, status, context, description, success) => {
 
 
 const codeClimateCoverage = () =>
-  exec('cat ./coverage/lcov.info | ./node_modules/travis-github-status/.bin/codeclimate-test-reporter')
+  exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
 
 
 setStatuses()
