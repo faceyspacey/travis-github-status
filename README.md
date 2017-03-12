@@ -47,6 +47,9 @@ within github.*
 ## Installation
 ```yarn add --dev travis-github-status```
 
+Grab a personal access token with `public_repo` scope from https://github.com/settings/tokens and set it as
+the `GITHUB_TOKEN` *env* variable in the `settings` page of your Travis repo. 
+
 ## Usage
 ```yml
 language: node_js
