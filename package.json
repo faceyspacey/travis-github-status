@@ -1,8 +1,11 @@
 {
   "name": "travis-github-status",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "bin": {
     "travis-github-status": "./dist/index.js"
   },
