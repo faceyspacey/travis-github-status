@@ -20,7 +20,7 @@ const setStatuses = () => {
 }
 
 
-const shouldSet = tool =>
+export const shouldSet = tool =>
   process.argv.indexOf(tool) > -1
 
 
@@ -146,4 +146,6 @@ const codeClimateCoverage = () =>
   exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
 
 
-setStatuses()
+if (process.env.NODE_ENV !== 'test') {
+  setStatuses()
+}
