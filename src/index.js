@@ -9,7 +9,7 @@ const cli = new eslint.CLIEngine()
 
 
 const setStatuses = () => {
-  const gh = new Github
+  const gh = new Github()
   const status = authenticateWithGithub(gh, process.env)
 
   if (shouldSet('lint')) setLintStatus(gh, status)
@@ -114,8 +114,8 @@ const setJestStatus = (gh, status) => {
 
 
 const setSnykStatus = (gh, status) => {
-  const ret = spawn('cat ./coverage/lcov.info | ./node_modules/travis-github-status/.bin/codeclimate-test-reporter')
-  const success = ret.status === 0
+  const ret = spawn('./node_modules/travis-github-status/.bin/snyk')
+  const success = parseInt(ret.status) === 0
   const description = success ? 'none' : 'RED ALERT!'
 
   setStatus(gh, status, 'Snyk Vulnerabilities', description, success)

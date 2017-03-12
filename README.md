@@ -1,4 +1,6 @@
-# travis-github-status
+# travis-github-status 
+<a href="https://snyk.io/test/github/faceyspacey/travis-github-status"><img src="https://snyk.io/test/github/faceyspacey/travis-github-status/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/faceyspacey/travis-github-status"></a>
+
 Use this as your primary means of running tests, linting and flow type checking
 in your `.travis.yml` file. If any tools have errors, they will properly insure an an exit code of `1` is used.
 
