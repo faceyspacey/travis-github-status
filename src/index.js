@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+require('colors')
 const Github = require('github')
 const eslint = require('eslint')
 const exec = require('child_process').execSync
@@ -92,14 +93,15 @@ const setFlowStatus = (gh, status) => {
   const success = errorCount === 0
   setStatus(gh, status, 'Flow Report', description, success)
 
-  console.log(stdout)
+  const log = stdout.replace(/\^(\^+)/g, '^$1'.red) // insure we omit single carets
+  console.log(log)
 }
 
 
 const setJestStatus = (gh, status) => {
   const { stderr } = spawn('node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
 
-  const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
+  const regex = /Tests:.+ (\d+) passed, (\d+) total/
   const [passedCount, testCount] = regex
     .exec(stderr)
     .slice(1, 3)
@@ -109,7 +111,8 @@ const setJestStatus = (gh, status) => {
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
 
-  console.log(stderr)
+  const log = stderr.replace(/✓/g, '✓'.blue).replace(/✕/g, '✕'.red)
+  console.log(log)
 }
 
 
@@ -129,7 +132,8 @@ const setStatus = (gh, status, context, description, success) => {
     description,
     state: success ? 'success' : 'failure',
   }, err => {
-    console.log(`${context}: ${err ? 'fail' : 'success!'}`)
+    const log = `${context}: ${description}`[success ? 'blue' : 'red']
+    console.log(log)
 
     if (err) {
       console.error(`${context}: Error creating status`, err)
