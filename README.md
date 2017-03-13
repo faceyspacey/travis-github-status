@@ -36,13 +36,15 @@
 
 
 Use this as your primary means of running tests, linting and flow type checking
-in your `.travis.yml` file. If any tools have errors, they will properly insure an an exit code of `1` is used.
+in your `.travis.yml` file. If any tools have errors, they will properly insure an exit code of `1` is used.
 
 But more importantly, they will provide 3 additional numeric reports to your pushes and pull requests, indicating
 the # of errors or tests passed of each service right there within github. That's its purpose :).
 
 *note: all 3 tools will get a chance to run even if an earlier one fails--that way you have as much information as available
 within github.*
+
+***new: codeclimate + snyk have been added, just make sure you add the tokens as `env` variables to Travis***
 
 ## Installation
 ```yarn add --dev travis-github-status```
