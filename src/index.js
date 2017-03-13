@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+require('colors')
 const Github = require('github')
 const eslint = require('eslint')
 const exec = require('child_process').execSync
@@ -8,7 +9,7 @@ const spawn = require('child_process').spawnSync
 const cli = new eslint.CLIEngine()
 
 
-const setStatuses = () => {
+export const setStatuses = () => {
   const gh = new Github()
   const status = authenticateWithGithub(gh, process.env)
 
@@ -78,7 +79,7 @@ const setLintStatus = (gh, status) => {
 
   const format = cli.getFormatter()
   const log = format(results)
-  console.log(log)
+  console.log(`${'ESLINT:'.blue} ${log || 'all good'.blue}`)
 }
 
 
@@ -92,14 +93,16 @@ const setFlowStatus = (gh, status) => {
   const success = errorCount === 0
   setStatus(gh, status, 'Flow Report', description, success)
 
-  console.log(stdout)
+  let log = stdout.replace(/\^(\^+)/g, '^$1'.red) // insure we omit single carets
+  log = log.indexOf('Found 0 errors') === 0 ? log.blue : log
+  console.log(`${'FLOW:'.blue} ${log}`)
 }
 
 
 const setJestStatus = (gh, status) => {
   const { stderr } = spawn('node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
 
-  const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
+  const regex = /Tests:.+ (\d+) passed, (\d+) total/
   const [passedCount, testCount] = regex
     .exec(stderr)
     .slice(1, 3)
@@ -109,7 +112,12 @@ const setJestStatus = (gh, status) => {
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
 
-  console.log(stderr)
+  const log = stderr
+    .replace(/✓/g, '✓'.green)
+    .replace(/✕/g, '✕'.red)
+    .replace('Ran all test suites.', 'JEST: Ran all test suites.'.blue)
+
+  console.log(log)
 }
 
 
@@ -129,7 +137,11 @@ const setStatus = (gh, status, context, description, success) => {
     description,
     state: success ? 'success' : 'failure',
   }, err => {
-    console.log(`${context}: ${err ? 'fail' : 'success!'}`)
+    context = `${context}:`.blue
+    description = description[success ? 'green' : 'red']
+
+    const log = `${context} ${description}`
+    console.log(log)
 
     if (err) {
       console.error(`${context}: Error creating status`, err)
@@ -144,7 +156,7 @@ const setStatus = (gh, status, context, description, success) => {
 
 const codeClimateCoverage = () =>
   exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
-  && console.log('Code Climate: success!')
+  && console.log('Code Climate Coverage: '.blue, 'success!'.green)
 
 
 if (process.env.NODE_ENV !== 'test') {

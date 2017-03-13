@@ -36,13 +36,15 @@
 
 
 Use this as your primary means of running tests, linting and flow type checking
-in your `.travis.yml` file. If any tools have errors, they will properly insure an an exit code of `1` is used.
+in your `.travis.yml` file. If any tools have errors, they will properly insure an exit code of `1` is used.
 
 But more importantly, they will provide 3 additional numeric reports to your pushes and pull requests, indicating
 the # of errors or tests passed of each service right there within github. That's its purpose :).
 
 *note: all 3 tools will get a chance to run even if an earlier one fails--that way you have as much information as available
 within github.*
+
+***new: codeclimate + snyk have been added, just make sure you add the tokens as `env` variables to Travis***
 
 ## Installation
 ```yarn add --dev travis-github-status```
@@ -60,12 +62,14 @@ node_js:
 cache: yarn
 
 script:
-  - node_modules/.bin/travis-script lint flow jest #omit tools you don't want statuses for
+  - node_modules/.bin/travis-github-status lint flow jest snyk codeclimate #omit tools you don't want statuses for
 ```
-*new tools: `snyk`, `codeclimate`. Just list them, for example, after `jest` above. You will need to add their tokens to Travis*
+
 
 ## Contributing
-Feel free to add more services such as Typescript, other test runners, etc. One thing it needs to do
-is properly re-colorize things like the checkmarks and Xes in tests so they are easily readable from the Travis
-console. [npm install colors](https://www.npmjs.com/package/colors) should do the trick in combination with `str.replace('checkmark', 'colored-chekmark')`.
-Something close to that will end up being it.
+Feel free to add more services such as Typescript, other test runners, etc. And better error checking, e.g.
+that all the `env` tokens are available.
+
+### Tests
+Yea, it's pretty much self-testing. It runs itself in the ci server (Travis), and if it can't run itself, it's failing,
+but feel free to add some offitial unit tests and perhaps breakup the individual functions into individual files.
