@@ -1,8 +1,18 @@
 {
   "name": "travis-github-status",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Set statuses on github from travis for jest, flow, + eslint",
-  "keywords": ["travis", "github", "jest", "eslint", "flow", "codeclimate", "snyk", "ci", "status"],
+  "keywords": [
+    "travis",
+    "github",
+    "jest",
+    "eslint",
+    "flow",
+    "codeclimate",
+    "snyk",
+    "ci",
+    "status"
+  ],
   "main": "./dist/index.js",
   "files": [
     "dist"
