@@ -94,7 +94,7 @@ const setFlowStatus = (gh, status) => {
   setStatus(gh, status, 'Flow Report', description, success)
 
   let log = stdout.replace(/\^(\^+)/g, '^$1'.red) // insure we omit single carets
-  log = log === 'Found 0 errors' ? log.blue : log
+  log = log.indexOf('Found 0 errors') === 0 ? log.blue : log
   console.log(`${'FLOW:'.blue} ${log}`)
 }
 
@@ -156,7 +156,7 @@ const setStatus = (gh, status, context, description, success) => {
 
 const codeClimateCoverage = () =>
   exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
-  && console.log('Code Climate Coverage: success!'.green)
+  && console.log('Code Climate Coverage: '.blue, 'success!'.green)
 
 
 if (process.env.NODE_ENV !== 'test') {
