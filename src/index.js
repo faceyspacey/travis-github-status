@@ -111,7 +111,7 @@ const setJestStatus = (gh, status) => {
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
 
-  const log = stderr.replace(/✓/g, '✓'.blue).replace(/✕/g, '✕'.red)
+  const log = stderr.replace(/✓/g, '✓'.green).replace(/✕/g, '✕'.red)
   console.log(log)
 }
 
@@ -132,7 +132,7 @@ const setStatus = (gh, status, context, description, success) => {
     description,
     state: success ? 'success' : 'failure',
   }, err => {
-    const log = `${context}: ${description}`[success ? 'blue' : 'red']
+    const log = `${context}: ${description}`[success ? 'green' : 'red']
     console.log(log)
 
     if (err) {
