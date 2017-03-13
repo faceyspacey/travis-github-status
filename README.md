@@ -60,7 +60,7 @@ node_js:
 cache: yarn
 
 script:
-  - node_modules/.bin/travis-script lint flow jest snyk codeclimate #omit tools you don't want statuses for
+  - node_modules/.bin/travis-github-status lint flow jest snyk codeclimate #omit tools you don't want statuses for
 ```
 
 

@@ -9,7 +9,7 @@ const spawn = require('child_process').spawnSync
 const cli = new eslint.CLIEngine()
 
 
-const setStatuses = () => {
+export const setStatuses = () => {
   const gh = new Github()
   const status = authenticateWithGithub(gh, process.env)
 
