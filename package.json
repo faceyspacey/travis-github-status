@@ -1,7 +1,8 @@
 {
   "name": "travis-github-status",
   "version": "1.1.0",
-  "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
+  "description": "Set statuses on github from travis for jest, flow, + eslint",
+  "keywords": ["travis", "github", "jest", "eslint", "flow", "codeclimate", "snyk", "ci", "status"],
   "main": "./dist/index.js",
   "files": [
     "dist"

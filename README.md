@@ -60,12 +60,14 @@ node_js:
 cache: yarn
 
 script:
-  - node_modules/.bin/travis-script lint flow jest #omit tools you don't want statuses for
+  - node_modules/.bin/travis-script lint flow jest snyk codeclimate #omit tools you don't want statuses for
 ```
-*new tools: `snyk`, `codeclimate`. Just list them, for example, after `jest` above. You will need to add their tokens to Travis*
+
 
 ## Contributing
-Feel free to add more services such as Typescript, other test runners, etc. One thing it needs to do
-is properly re-colorize things like the checkmarks and Xes in tests so they are easily readable from the Travis
-console. [npm install colors](https://www.npmjs.com/package/colors) should do the trick in combination with `str.replace('checkmark', 'colored-chekmark')`.
-Something close to that will end up being it.
+Feel free to add more services such as Typescript, other test runners, etc. And better error checking, e.g.
+that all the `env` tokens are available.
+
+### Tests
+Yea, it's pretty much self-testing. It runs itself in ci server (Travis), and if it can't run itself, it's failing,
+but feel free to add some offitial unit tests and perhaps breakup the individual functions into individual files.

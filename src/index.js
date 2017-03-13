@@ -79,7 +79,7 @@ const setLintStatus = (gh, status) => {
 
   const format = cli.getFormatter()
   const log = format(results)
-  console.log(log)
+  console.log(`${'ESLINT:'.blue} ${log || 'all good'.blue}`)
 }
 
 
@@ -93,8 +93,9 @@ const setFlowStatus = (gh, status) => {
   const success = errorCount === 0
   setStatus(gh, status, 'Flow Report', description, success)
 
-  const log = stdout.replace(/\^(\^+)/g, '^$1'.red) // insure we omit single carets
-  console.log(log)
+  let log = stdout.replace(/\^(\^+)/g, '^$1'.red) // insure we omit single carets
+  log = log === 'Found 0 errors' ? log.blue : log
+  console.log(`${'FLOW:'.blue} ${log}`)
 }
 
 
@@ -111,7 +112,11 @@ const setJestStatus = (gh, status) => {
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
 
-  const log = stderr.replace(/✓/g, '✓'.green).replace(/✕/g, '✕'.red)
+  const log = stderr
+    .replace(/✓/g, '✓'.green)
+    .replace(/✕/g, '✕'.red)
+    .replace('Ran all test suites.', 'JEST: Ran all test suites.'.blue)
+
   console.log(log)
 }
 
@@ -132,7 +137,10 @@ const setStatus = (gh, status, context, description, success) => {
     description,
     state: success ? 'success' : 'failure',
   }, err => {
-    const log = `${context}: ${description}`[success ? 'green' : 'red']
+    context = `${context}:`.blue
+    description = description[success ? 'green' : 'red']
+
+    const log = `${context} ${description}`
     console.log(log)
 
     if (err) {
@@ -148,7 +156,7 @@ const setStatus = (gh, status, context, description, success) => {
 
 const codeClimateCoverage = () =>
   exec('cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js')
-  && console.log('Code Climate: success!')
+  && console.log('Code Climate Coverage: success!'.green)
 
 
 if (process.env.NODE_ENV !== 'test') {
