@@ -71,5 +71,5 @@ Feel free to add more services such as Typescript, other test runners, etc. And 
 that all the `env` tokens are available.
 
 ### Tests
-Yea, it's pretty much self-testing. It runs itself in ci server (Travis), and if it can't run itself, it's failing,
+Yea, it's pretty much self-testing. It runs itself in the ci server (Travis), and if it can't run itself, it's failing,
 but feel free to add some offitial unit tests and perhaps breakup the individual functions into individual files.
