@@ -44,13 +44,13 @@ the # of errors or tests passed of each service right there within github. That'
 *note: all 3 tools will get a chance to run even if an earlier one fails--that way you have as much information as available
 within github.*
 
-***new: codeclimate + snyk have been added, just make sure you add the tokens as `env` variables to Travis***
+***NEW: codeclimate + snyk have been added, just make sure you add the tokens as `env` variables to Travis***
 
 ## Installation
 ```yarn add --dev travis-github-status```
 
 Grab a personal access token with `public_repo` scope from https://github.com/settings/tokens and set it as
-the `GITHUB_TOKEN` *env* variable in the `settings` page of your Travis repo. 
+the `GITHUB_TOKEN` *env* variable in the ***settings*** page of your Travis repo. 
 
 ## Usage
 ```yml
