@@ -10,6 +10,8 @@
     "travis-github-status": "./dist/index.js"
   },
   "scripts": {
+    "start": "babel-node src/index.js lint flow jest snyk codeclimate",
+    "start:prod": "node dist/index.js lint flow jest snyk codeclimate",
     "push": "git add --all && git commit -a -m 'build' && git push",
     "prepublish": "npm run clean && npm run build",
     "build": "babel src -d dist",
