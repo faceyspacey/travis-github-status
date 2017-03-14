@@ -1,9 +1,13 @@
 language: node_js
+
 node_js:
 - stable
+
 cache: yarn
+
 script:
 - npm run start:prod
+
 deploy:
   provider: npm
   email: james@faceyspacey.com
