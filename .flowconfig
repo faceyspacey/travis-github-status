@@ -2,6 +2,7 @@
 <PROJECT_ROOT>/node_modules/fbjs
 <PROJECT_ROOT>/node_modules/invariant
 <PROJECT_ROOT>/node_modules/github
+.*/node_modules/config-chain/.*
 
 [include]
 
