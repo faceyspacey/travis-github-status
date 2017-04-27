@@ -75,7 +75,10 @@ script:
 
 
 ## Contributing
-Feel free to add more services such as Typescript, other test runners, etc. And better error checking, e.g.
+We use [commitizen](https://github.com/commitizen/cz-cli), so run `npm run commit` to make commits. A command-line form will appear, requiring you answer a few questions to automatically produce a nicely formatted commit. Releases, semantic version numbers, tags and changelogs will automatically be generated based on these commits thanks to [semantic-release](https://github.com/semantic-release/semantic-release).
+
+**TO DO:**
+- Feel free to add more services such as Typescript, other test runners, etc. And better error checking, e.g.
 that all the `env` tokens are available.
 
 ### Tests
