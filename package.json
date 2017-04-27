@@ -1,6 +1,6 @@
 {
   "name": "travis-github-status",
-  "version": "0.0.0-placeholder",
+  "version": "0.0.0-development",
   "description": "Set statuses on github from travis for jest, flow, + eslint",
   "keywords": [
     "travis",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/faceyspacey/travis-github-status.git"
+    "url": "https://github.com/faceyspacey/travis-github-status.git"
   },
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",

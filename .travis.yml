@@ -1,18 +1,12 @@
+sudo: false
 language: node_js
-
 node_js:
 - stable
-
 cache: yarn
-
 script:
 - npm run start:prod
-
-deploy:
-  provider: npm
-  email: james@faceyspacey.com
-  api_key:
-    secure: hBRVzuBKeNI4TM/O5N/8tPc6NCjzZwyV1CzDQm6lAVMhpf/W3dghAzanWOR2489m6nbkIR2TIG3f/gSaWdxAd5Ea1FpDcEwHxarPzzv7VNv62VHAsqU+G7k5FVN28WKMjZz4UU0enMUzslo/+djIT8+xeM5L5Hm50apFlU/F0B3KbOkLVevlQry3cnqeiLnC3JYPwdh9Pf7H3yS0RvdtJCTiWq+ErUFeHZcKMX++Kq55Tcv4zZ7yeuX42dpPXYfntOqxzdE0ZyQMzOIiNutUJHt8IgkTrJiv6UcTkZ6bl6cswqIoVSg9wnbqputHln2AkOviDHQOY+TRXZTVYHX5KO3BD+bMaV4K+wSDgHDly4cNMbvGG/O6OHu2SVrzcvk3QCNjyYX6PXEJIU3PEkGk0K2WlyYHwwSqt4LJs9mP2GcxQ7ufeO6fvH1aCLaUc3dFesGhuyF9dpVMHdG7H1pp7j2AEUE21oKqpnFPjzj5efqsAGtpRAFctx8OS0o96VvQcv+vgPZiN7dTAUT/hh+S4Ps2i5A/VA1ZMyIuzjLLMmMKsJ/bM+kQ5gXZR+Cne1wLbo/sHoBY2GQ0nE9RxmINrJZ+vRPRGVE9AacGhyLjRa6k6BelfCqzh4EPPEZx25pmeqNEB7Qy4kizd94iGkzqh4BWSbs4lUPRnSSSIaebHN0=
-  on:
-    tags: true
-    repo: faceyspacey/travis-github-status
+after_success:
+  - yarn run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
