@@ -17,9 +17,7 @@
   "files": [
     "dist"
   ],
-  "bin": {
-    "travis-github-status": "./dist/index.js"
-  },
+  "bin": "./dist/index.js",
   "scripts": {
     "start": "babel-node src/index.js lint flow jest snyk codeclimate",
     "start:prod": "node dist/index.js lint flow jest snyk codeclimate",

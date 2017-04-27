@@ -50,7 +50,15 @@ within github.*
 ```yarn add --dev travis-github-status```
 
 Grab a personal access token with `public_repo` scope from https://github.com/settings/tokens and set it as
-the `GITHUB_TOKEN` *env* variable in the ***settings*** page of your Travis repo. 
+the `GH_TOKEN` *env* variable in the ***settings*** page of your Travis repo. If you are using [semantic-release](https://github.com/semantic-release/semantic-release),
+the `semantic-release-cli` will in fact create the token for you, and add it to your repo on Travis! We highly recommend using that:
+
+```
+npm install -g semantic-release-cli
+
+cd your-module
+semantic-release-cli setup
+```
 
 ## Usage
 ```yml

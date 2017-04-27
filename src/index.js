@@ -25,7 +25,13 @@ export const shouldSet = tool =>
   process.argv.indexOf(tool) > -1
 
 
-const authenticateWithGithub = (gh, { TRAVIS_EVENT_TYPE, TRAVIS_REPO_SLUG, TRAVIS_JOB_ID, GITHUB_TOKEN }) => {
+const authenticateWithGithub = (gh, {
+  TRAVIS_EVENT_TYPE,
+  TRAVIS_REPO_SLUG,
+  TRAVIS_JOB_ID,
+  GH_TOKEN,
+  GITHUB_TOKEN,
+}) => {
   const sha = getCommitSha(TRAVIS_EVENT_TYPE)
   const repoSlug = TRAVIS_REPO_SLUG
   const target_url = `https://travis-ci.org/${repoSlug}/jobs/${TRAVIS_JOB_ID}`
@@ -34,7 +40,7 @@ const authenticateWithGithub = (gh, { TRAVIS_EVENT_TYPE, TRAVIS_REPO_SLUG, TRAVI
   const repo = parsedSlug[1]
 
   gh.authenticate({
-    token: GITHUB_TOKEN,
+    token: GH_TOKEN || GITHUB_TOKEN,
     type: 'oauth',
   }, err => {
     if (err) console.error('Error authenticating GitHub', err)
