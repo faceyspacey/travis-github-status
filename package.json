@@ -75,7 +75,7 @@
   "peerDependencies": {
     "eslint": "*",
     "flow-bin": "*",
-    "jest": "*"
+    "jest": ">=20.0.0"
   },
   "jest": {
     "verbose": true,
