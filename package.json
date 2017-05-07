@@ -14,9 +14,6 @@
     "status"
   ],
   "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
   "bin": "./dist/index.js",
   "scripts": {
     "start": "babel-node src/index.js lint flow jest codeclimate",
@@ -74,7 +71,6 @@
   },
   "peerDependencies": {
     "eslint": "*",
-    "flow-bin": "*",
     "jest": "*"
   },
   "jest": {
