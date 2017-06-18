@@ -5,15 +5,24 @@ export default ({ CODECLIMATE_REPO_TOKEN }) => {
   if (!CODECLIMATE_REPO_TOKEN) {
     return console.log(
       'Code Climate Coverage: '.blue,
-      'FAIL: please provide the CODECLIMATE_REPO_TOKEN environment variable in Travis'
-        .red,
+      'WARNING: please provide the CODECLIMATE_REPO_TOKEN environment variable in Travis'
+        .orange,
     )
   }
 
-  exec(
-    'cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js',
-  )
+  try {
+    exec(
+      'cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js',
+    )
 
-  // colored logging
-  console.log('Code Climate Coverage: '.blue, 'success!'.green)
+    // colored logging
+    console.log('Code Climate Coverage: '.blue, 'success!'.green)
+  }
+  catch (error) {
+    console.log(
+      'WARNING: coverage failed to report to Code Climate (probably because you have no tests which import source code)'
+        .orange,
+      error,
+    )
+  }
 }

@@ -8,6 +8,13 @@ export default status => {
     encoding: 'utf8',
   })
 
+  const noTests = /Your test suite must contain at least one test/.test(stderr)
+
+  if (noTests) {
+    setStatus(status, 'Jest Tests', 'Pass: No Tests Yet', true)
+    return console.log('JEST: No Tests Yet (Pass)'.blue)
+  }
+
   const regex = /Tests:.+ (\d+) passed, (\d+) total/
   const [passedCount, testCount] = regex
     .exec(stderr)

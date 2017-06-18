@@ -6,7 +6,8 @@ export default (status, { SNYK_TOKEN }) => {
   if (!SNYK_TOKEN) {
     return console.log(
       'Snyk Vulberabilities: '.blue,
-      'FAIL: please provide the SNYK_TOKEN environment variable in Travis'.red,
+      'WARNING: please provide the SNYK_TOKEN environment variable in Travis'
+        .orange,
     )
   }
 

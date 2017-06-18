@@ -1,3 +1,5 @@
+const fetch = require('node-fetch')
+
 export const shouldSet = tool => process.argv.indexOf(tool) > -1
 
 export const getStatus = ({
