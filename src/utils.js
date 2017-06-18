@@ -66,7 +66,7 @@ export const setStatus = (status, context, description, success) => {
   })
     .then(res => res.json())
     .then(res => {
-      const err = res.success
+      const err = !res.success
       const message = res.message
       // colored logging
       context = `${context}:`.blue
