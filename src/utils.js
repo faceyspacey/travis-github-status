@@ -14,13 +14,16 @@ export const getStatus = ({
   const parsedSlug = repoSlug.split('/')
   const owner = parsedSlug[0]
   const repo = parsedSlug[1]
+  const runKitUrl =
+    RUN_KIT_URL ||
+    'https://github-status-reporter-4-travis-w97e064wfjok.runkit.sh/'
 
   return {
     sha,
     target_url,
     owner,
     repo,
-    RUN_KIT_URL,
+    runKitUrl,
   }
 }
 
@@ -40,10 +43,8 @@ const getCommitSha = eventType => {
 }
 
 export const setStatus = (status, context, description, success) => {
-  const defaultUrl =
-    'https://github-status-reporter-4-travis-w97e064wfjok.runkit.sh/'
-  const runKitUrl = status.RUN_KIT_URL || defaultUrl
-  delete status.RUN_KIT_URL
+  const runKitUrl = status.runKitUrl
+  delete status.runKitUrl
 
   const params = {
     ...status,
@@ -70,7 +71,7 @@ export const setStatus = (status, context, description, success) => {
 
       const log = `${context} ${description}`
       console.log(log)
-
+      console.log('IT WORKED!', context, response)
       if (err) {
         console.error(`${context}: Error creating status`, message)
       }
@@ -81,7 +82,6 @@ export const setStatus = (status, context, description, success) => {
       }
     })
 
-  console.log('FOO', success)
   if (!success) {
     process.exitCode = 1
   }
