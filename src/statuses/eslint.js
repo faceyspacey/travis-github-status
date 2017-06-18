@@ -18,7 +18,7 @@ export default status => {
     cli.resolveFileGlobPatterns(files),
   )
 
-  const description = `errors: ${errorCount} warnings: ${warningCount}`
+  const description = `errors: ${errorCount}, warnings: ${warningCount}`
   const success = errorCount === 0
   setStatus(status, 'ESLint Report', description, success)
 

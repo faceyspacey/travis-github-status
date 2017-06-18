@@ -1,7 +1,7 @@
 {
   "name": "travis-github-status",
   "version": "0.0.0-development",
-  "description": "Set statuses on github from travis for jest, flow, + eslint",
+  "description": "Set statuses on github from travis for: jest, flow, eslint, snyk, codeclimate",
   "keywords": [
     "travis",
     "github",

@@ -60,20 +60,26 @@ export const setStatus = (status, context, description, success) => {
     },
 
     body: JSON.stringify(params),
-  }).then(response => {
-    const err = response.success
-    const message = response.message
-    // colored logging
-    context = `${context}:`.blue
-    description = description[success ? 'green' : 'red']
-
-    const log = `${context} ${description}`
-    console.log(log)
-
-    if (err) {
-      console.error(`${context}: Error creating status`, message)
-    }
   })
+    .then(response => {
+      const err = response.success
+      const message = response.message
+      // colored logging
+      context = `${context}:`.blue
+      description = description[success ? 'green' : 'red']
+
+      const log = `${context} ${description}`
+      console.log(log)
+
+      if (err) {
+        console.error(`${context}: Error creating status`, message)
+      }
+    })
+    .catch(err => {
+      if (err) {
+        console.error(`${context}: Error creating status`, err.message)
+      }
+    })
 
   if (!success) {
     process.exitCode = 1
