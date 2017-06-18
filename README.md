@@ -75,7 +75,7 @@ script:
 
 
 ## Contributing
-We use [commitizen](https://github.com/commitizen/cz-cli), so run `npm run commit` to make commits. A command-line form will appear, requiring you answer a few questions to automatically produce a nicely formatted commit. Releases, semantic version numbers, tags and changelogs will automatically be generated based on these commits thanks to [semantic-release](https://github.com/semantic-release/semantic-release).
+We use [commitizen](https://github.com/commitizen/cz-cli), so run `npm run cm` to make commits. A command-line form will appear, requiring you answer a few questions to automatically produce a nicely formatted commit. Releases, semantic version numbers, tags and changelogs will automatically be generated based on these commits thanks to [semantic-release](https://github.com/semantic-release/semantic-release).
 
 
 **TO DO:**
@@ -84,5 +84,5 @@ that all the `env` tokens are available.
 
 
 ### Tests
-Yea, it's pretty much self-testing. It runs itself in the ci server (Travis), and if it can't run itself, it's failing,
-but feel free to add some offitial unit tests and perhaps breakup the individual functions into individual files.
+Yea, it's pretty much self-testing. It runs itself in the CI server (Travis), and if it can't run itself, it's failing,
+but feel free to add some official unit tests and perhaps breakup the individual functions into individual files.

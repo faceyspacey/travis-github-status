@@ -32,6 +32,14 @@ const authenticateWithGithub = (
   const owner = parsedSlug[0]
   const repo = parsedSlug[1]
 
+  console.log('TRAVIS_REPO_SLUG', TRAVIS_REPO_SLUG)
+  console.log(
+    'HAS TOKENS',
+    !!GH_TOKEN,
+    !!GITHUB_TOKEN,
+    GH_TOKEN === GITHUB_TOKEN,
+  )
+
   gh.authenticate(
     {
       token: GH_TOKEN || GITHUB_TOKEN,

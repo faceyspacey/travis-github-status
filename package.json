@@ -27,7 +27,7 @@
     "lint": "eslint --fix src __tests__ __fixtures__",
     "clean": "rimraf dist && mkdir dist",
     "precommit": "lint-staged --verbose && npm test",
-    "commit": "git-cz",
+    "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
