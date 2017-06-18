@@ -74,7 +74,7 @@ export const setStatus = (status, context, description, success) => {
 
       const log = `${context} ${description}`
       console.log(log)
-      console.log('IT WORKED!', context, res)
+
       if (err) {
         console.error(`${context}: Error creating status`, message)
       }
