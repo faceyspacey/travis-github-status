@@ -81,6 +81,7 @@ export const setStatus = (status, context, description, success) => {
       }
     })
 
+  console.log('FOO', success)
   if (!success) {
     process.exitCode = 1
   }
