@@ -44,10 +44,12 @@ const getCommitSha = eventType => {
 
 export const setStatus = (status, context, description, success) => {
   const runKitUrl = status.runKitUrl
-  delete status.runKitUrl
 
   const params = {
-    ...status,
+    sha: status.sha,
+    target_url: status.target_url,
+    owner: status.owner,
+    repo: status.repo,
     context,
     description,
     state: success ? 'success' : 'failure',
@@ -62,16 +64,17 @@ export const setStatus = (status, context, description, success) => {
 
     body: JSON.stringify(params),
   })
-    .then(response => {
-      const err = response.success
-      const message = response.message
+    .then(res => res.json())
+    .then(res => {
+      const err = res.success
+      const message = res.message
       // colored logging
       context = `${context}:`.blue
       description = description[success ? 'green' : 'red']
 
       const log = `${context} ${description}`
       console.log(log)
-      console.log('IT WORKED!', context, response)
+      console.log('IT WORKED!', context, res)
       if (err) {
         console.error(`${context}: Error creating status`, message)
       }
