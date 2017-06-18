@@ -1,150 +1,92 @@
 module.exports = {
-  "env": {
-      "browser": true,
-      "commonjs": true,
-      "es6": true
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true
   },
-  "extends": [
-    "plugin:flowtype/recommended"
-  ],
-  "parser": "babel-eslint",
-  "parserOptions": {
-      "ecmaFeatures": {
-          "generators": true,
-          "experimentalObjectRestSpread": true,
-          "jsx": true
-      },
-      "sourceType": "module",
-      "allowImportExportEverywhere": false
+  extends: ['plugin:flowtype/recommended'],
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      generators: true,
+      experimentalObjectRestSpread: true,
+      jsx: true
+    },
+    sourceType: 'module',
+    allowImportExportEverywhere: false
   },
-  "plugins": [
-      "react",
-      "babel",
-      "flowtype",
-      "import"
-  ],
-    "globals": {
-      "window": true,
-      "document": true,
-      "__dirname": true,
-      "__DEV__": true,
-      "CONFIG": true,
-      "process": true,
-      "jest": true,
-      "describe": true,
-      "it": true,
-      "expect": true,
-      "beforeEach": true
+  plugins: ['react', 'babel', 'flowtype', 'import'],
+  globals: {
+    window: true,
+    document: true,
+    __dirname: true,
+    __DEV__: true,
+    CONFIG: true,
+    process: true,
+    jest: true,
+    describe: true,
+    it: true,
+    expect: true,
+    beforeEach: true
   },
-  "settings": {
-    "flowtype": {
-      "onlyFilesWithFlowAnnotation": true
+  settings: {
+    flowtype: {
+      onlyFilesWithFlowAnnotation: true
     },
     'import/resolver': {
       node: {
         extensions: ['.js', '.json', '.styl', '.css']
       }
     },
-    'import/extensions': [
-      '.js',
-    ],
-    'import/core-modules': [
-    ],
-    'import/ignore': [
-      'node_modules',
-      'flow-typed',
-      '\\.(css|styl|svg|json)$',
-    ],
+    'import/extensions': ['.js'],
+    'import/core-modules': [],
+    'import/ignore': ['node_modules', 'flow-typed', '\\.(css|styl|svg|json)$']
   },
-  "rules": {
-    "flowtype/boolean-style": [
+  rules: {
+    'flowtype/boolean-style': [2, 'boolean'],
+    'flowtype/define-flow-type': 1,
+    'flowtype/delimiter-dangle': [2, 'always-multiline'],
+    'flowtype/generic-spacing': [2, 'never'],
+    'flowtype/no-primitive-constructor-types': 2,
+    'flowtype/no-weak-types': 2,
+    'flowtype/object-type-delimiter': [2, 'comma'],
+    'flowtype/require-parameter-type': [
       2,
-      "boolean"
-    ],
-    "flowtype/define-flow-type": 1,
-    "flowtype/delimiter-dangle": [
-      2,
-      "always-multiline"
-    ],
-    "flowtype/generic-spacing": [
-      2,
-      "never"
-    ],
-    "flowtype/no-primitive-constructor-types": 2,
-    "flowtype/no-weak-types": 2,
-    "flowtype/object-type-delimiter": [
-      2,
-      "comma"
-    ],
-    "flowtype/require-parameter-type": [
-        2,
-        {
-          "excludeArrowFunctions": true
-        }
-    ],
-    "flowtype/require-return-type": [
-      2,
-      "never",
       {
-        "annotateUndefined": "never"
+        excludeArrowFunctions: true
       }
     ],
-    "flowtype/require-valid-file-annotation": [
+    'flowtype/require-return-type': [
       2,
-      "never"
+      'never',
+      {
+        annotateUndefined: 'never'
+      }
     ],
-    "flowtype/semi": [
-      2,
-      "never"
-    ],
-    "flowtype/space-after-type-colon": [
-      2,
-      "always"
-    ],
-    "flowtype/space-before-generic-bracket": [
-      2,
-      "never"
-    ],
-    "flowtype/space-before-type-colon": [
-      2,
-      "never"
-    ],
-    "flowtype/type-id-match": [
-      2,
-      "^([A-Z][a-z0-9]+)+$"
-    ],
-    "flowtype/union-intersection-spacing": [
-      2,
-      "always"
-    ],
-    "flowtype/use-flow-type": 1,
-    "flowtype/valid-syntax": 1,
-    "react/no-comment-textnodes": 0,
-    "no-debugger": 1,
-    "generator-star-spacing": 1,
-    "babel/new-cap": 1,
-    "array-bracket-spacing": 0,
-    "babel/object-curly-spacing": 0,
-    "object-shorthand": 1,
-    "arrow-parens": 0,
-    "comma-dangle": 0,
-    "no-console": ["off", { allow: ["warn", "error"] }],
-    "no-unused-vars": ["off", { "vars": "all", "args": "after-used" }], //doesn't play nice with jsx
-    "strict": 0,
-    "indent": [
-          "warn",
-          2
-    ],
-    "linebreak-style": [
-        "error",
-        "unix"
-    ],
-    "quotes": [
-        "error",
-        "single"
-    ],
-
-
+    'flowtype/require-valid-file-annotation': [2, 'never'],
+    'flowtype/semi': [2, 'never'],
+    'flowtype/space-after-type-colon': [2, 'always'],
+    'flowtype/space-before-generic-bracket': [2, 'never'],
+    'flowtype/space-before-type-colon': [2, 'never'],
+    'flowtype/type-id-match': [2, '^([A-Z][a-z0-9]+)+$'],
+    'flowtype/union-intersection-spacing': [2, 'always'],
+    'flowtype/use-flow-type': 1,
+    'flowtype/valid-syntax': 1,
+    'react/no-comment-textnodes': 0,
+    'no-debugger': 1,
+    'generator-star-spacing': 1,
+    'babel/new-cap': 1,
+    'array-bracket-spacing': 0,
+    'babel/object-curly-spacing': 0,
+    'object-shorthand': 1,
+    'arrow-parens': 0,
+    'comma-dangle': 0,
+    'no-console': ['off', { allow: ['warn', 'error'] }],
+    'no-unused-vars': ['off', { vars: 'all', args: 'after-used' }], //doesn't play nice with jsx
+    strict: 0,
+    indent: ['warn', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
 
     // AIRBNB REACT:
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb/rules/react.js
@@ -159,7 +101,10 @@ module.exports = {
 
     // Forbid certain propTypes (any, array, object)
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md
-    'react/forbid-prop-types': ['error', { forbid: ['any', 'array', 'object'] }],
+    'react/forbid-prop-types': [
+      'error',
+      { forbid: ['any', 'array', 'object'] }
+    ],
 
     // Enforce boolean attributes notation in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
@@ -175,10 +120,13 @@ module.exports = {
 
     // Enforce event handler naming conventions in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
-    'react/jsx-handler-names': ['off', {
-      eventHandlerPrefix: 'handle',
-      eventHandlerPropPrefix: 'on',
-    }],
+    'react/jsx-handler-names': [
+      'off',
+      {
+        eventHandlerPrefix: 'handle',
+        eventHandlerPropPrefix: 'on'
+      }
+    ],
 
     // Validate props indentation in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
@@ -194,11 +142,14 @@ module.exports = {
 
     // Prevent usage of .bind() in JSX props
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-    'react/jsx-no-bind': ['error', {
-      ignoreRefs: true,
-      allowArrowFunctions: true,
-      allowBind: false,
-    }],
+    'react/jsx-no-bind': [
+      'error',
+      {
+        ignoreRefs: true,
+        allowArrowFunctions: true,
+        allowBind: false
+      }
+    ],
 
     // Prevent duplicate props in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
@@ -214,30 +165,39 @@ module.exports = {
 
     // Enforce PascalCase for user-defined JSX components
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
-    'react/jsx-pascal-case': ['error', {
-      allowAllCaps: true,
-      ignore: [],
-    }],
+    'react/jsx-pascal-case': [
+      'error',
+      {
+        allowAllCaps: true,
+        ignore: []
+      }
+    ],
 
     // Enforce propTypes declarations alphabetical sorting
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md
-    'react/sort-prop-types': ['off', {
-      ignoreCase: true,
-      callbacksLast: false,
-      requiredFirst: false,
-    }],
+    'react/sort-prop-types': [
+      'off',
+      {
+        ignoreCase: true,
+        callbacksLast: false,
+        requiredFirst: false
+      }
+    ],
 
     // Deprecated in favor of react/jsx-sort-props
     'react/jsx-sort-prop-types': 'off',
 
     // Enforce props alphabetical sorting
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
-    'react/jsx-sort-props': ['off', {
-      ignoreCase: true,
-      callbacksLast: false,
-      shorthandFirst: false,
-      shorthandLast: false,
-    }],
+    'react/jsx-sort-props': [
+      'off',
+      {
+        ignoreCase: true,
+        callbacksLast: false,
+        shorthandFirst: false,
+        shorthandLast: false
+      }
+    ],
 
     // Prevent React to be incorrectly marked as unused
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
@@ -297,7 +257,10 @@ module.exports = {
 
     // Prevent missing props validation in a React component definition
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
-    'react/prop-types': ['error', { ignore: ['data-hover'], customValidators: [] }],
+    'react/prop-types': [
+      'error',
+      { ignore: ['data-hover'], customValidators: [] }
+    ],
 
     // Prevent missing React when using JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
@@ -322,27 +285,33 @@ module.exports = {
 
     // Enforce component methods order
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md
-    'react/sort-comp': ['error', {
-      order: [
-        'props',
-        'state',
-        'static-methods',
-        'lifecycle',
-        '/^on.+$/',
-        '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
-        'everything-else',
-        '/^render.+$/',
-        'render'
-      ],
-    }],
+    'react/sort-comp': [
+      'error',
+      {
+        order: [
+          'props',
+          'state',
+          'static-methods',
+          'lifecycle',
+          '/^on.+$/',
+          '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
+          'everything-else',
+          '/^render.+$/',
+          'render'
+        ]
+      }
+    ],
 
     // Prevent missing parentheses around multilines JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md
-    'react/jsx-wrap-multilines': ['error', {
-      declaration: true,
-      assignment: true,
-      return: true
-    }],
+    'react/jsx-wrap-multilines': [
+      'error',
+      {
+        declaration: true,
+        assignment: true,
+        return: true
+      }
+    ],
     'react/wrap-multilines': 'off', // deprecated version
 
     // Require that the first prop in a JSX element be on a new line when the element is multiline
@@ -393,11 +362,13 @@ module.exports = {
 
     // Prevent unused propType definitions
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
-    'react/no-unused-prop-types': ['error', {
-      customValidators: [
-      ],
-      skipShapeProps: true,
-    }],
+    'react/no-unused-prop-types': [
+      'error',
+      {
+        customValidators: [],
+        skipShapeProps: true
+      }
+    ],
 
     // Require style prop value be an object or var
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
@@ -413,11 +384,14 @@ module.exports = {
 
     // Validate whitespace in and around the JSX opening and closing brackets
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md
-    'react/jsx-tag-spacing': ['error', {
-      closingSlash: 'never',
-      beforeSelfClosing: 'always',
-      afterOpening: 'never'
-    }],
+    'react/jsx-tag-spacing': [
+      'error',
+      {
+        closingSlash: 'never',
+        beforeSelfClosing: 'always',
+        afterOpening: 'never'
+      }
+    ],
 
     // Prevent usage of Array index in keys
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
@@ -427,20 +401,20 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
     'react/require-default-props': 0,
 
-
-
-
     // AIRBNB ERRORS:
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/errors.js
 
     // require trailing commas in multiline object literals
-    'comma-dangle': ['error', {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'always-multiline',
-    }],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'always-multiline'
+      }
+    ],
 
     // Disallow await inside of loops
     // http://eslint.org/docs/rules/no-await-in-loop
@@ -450,7 +424,7 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
 
     // disallow use of console
-    'no-console': ["off", { allow: ["warn", "error"] }],
+    'no-console': ['off', { allow: ['warn', 'error'] }],
 
     // disallow use of constant expressions in conditions
     'no-constant-condition': 'warn',
@@ -485,11 +459,15 @@ module.exports = {
 
     // disallow unnecessary parentheses
     // http://eslint.org/docs/rules/no-extra-parens
-    'no-extra-parens': ['off', 'all', {
-      conditionalAssign: true,
-      nestedBinaryExpressions: false,
-      returnAssign: false,
-    }],
+    'no-extra-parens': [
+      'off',
+      'all',
+      {
+        conditionalAssign: true,
+        nestedBinaryExpressions: false,
+        returnAssign: false
+      }
+    ],
 
     // disallow unnecessary semicolons
     'no-extra-semi': 'error',
@@ -552,8 +530,6 @@ module.exports = {
     // http://eslint.org/docs/rules/valid-typeof
     'valid-typeof': ['error', { requireStringLiterals: true }],
 
-
-
     // AIRBNB VARIABLES
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/variables.js
 
@@ -574,7 +550,7 @@ module.exports = {
     'no-restricted-globals': 'off',
 
     // disallow declaration of variables already declared in the outer scope
-    'no-shadow': [0, { "builtinGlobals": false, "hoist": "functions", "allow": [] }],
+    'no-shadow': [0, { builtinGlobals: false, hoist: 'functions', allow: [] }],
 
     // disallow shadowing of names such as arguments
     'no-shadow-restricted-names': 'error',
@@ -596,9 +572,6 @@ module.exports = {
     // disallow use of variables before they are defined
     'no-use-before-define': 0,
 
-
-
-
     // AIRBNB BEST-PRACTICES:
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/best-practices.js
 
@@ -614,9 +587,12 @@ module.exports = {
 
     // enforce that class methods use "this"
     // http://eslint.org/docs/rules/class-methods-use-this
-    'class-methods-use-this': ['error', {
-      exceptMethods: [],
-    }],
+    'class-methods-use-this': [
+      'error',
+      {
+        exceptMethods: []
+      }
+    ],
 
     // require return statements to either always or never specify values
     'consistent-return': 'error',
@@ -660,13 +636,12 @@ module.exports = {
 
     // disallow empty functions, except for standalone funcs/arrows
     // http://eslint.org/docs/rules/no-empty-function
-    'no-empty-function': ['error', {
-      allow: [
-        'arrowFunctions',
-        'functions',
-        'methods',
-      ]
-    }],
+    'no-empty-function': [
+      'error',
+      {
+        allow: ['arrowFunctions', 'functions', 'methods']
+      }
+    ],
 
     // disallow empty destructuring patterns
     // http://eslint.org/docs/rules/no-empty-pattern
@@ -702,12 +677,15 @@ module.exports = {
 
     // disallow implicit type conversions
     // http://eslint.org/docs/rules/no-implicit-coercion
-    'no-implicit-coercion': ['off', {
-      boolean: false,
-      number: true,
-      string: true,
-      allow: [],
-    }],
+    'no-implicit-coercion': [
+      'off',
+      {
+        boolean: false,
+        number: true,
+        string: true,
+        allow: []
+      }
+    ],
 
     // disallow var and named functions in global scope
     // http://eslint.org/docs/rules/no-implicit-globals
@@ -733,12 +711,15 @@ module.exports = {
 
     // disallow magic numbers
     // http://eslint.org/docs/rules/no-magic-numbers
-    'no-magic-numbers': ['off', {
-      ignore: [],
-      ignoreArrayIndexes: true,
-      enforceConst: true,
-      detectObjects: false,
-    }],
+    'no-magic-numbers': [
+      'off',
+      {
+        ignore: [],
+        ignoreArrayIndexes: true,
+        enforceConst: true,
+        detectObjects: false
+      }
+    ],
 
     // disallow use of multiple spaces
     'no-multi-spaces': 'error',
@@ -775,21 +756,27 @@ module.exports = {
 
     // disallow certain object properties
     // http://eslint.org/docs/rules/no-restricted-properties
-    'no-restricted-properties': ['error', {
-      object: 'arguments',
-      property: 'callee',
-      message: 'arguments.callee is deprecated',
-    }, {
-      property: '__defineGetter__',
-      message: 'Please use Object.defineProperty instead.',
-    }, {
-      property: '__defineSetter__',
-      message: 'Please use Object.defineProperty instead.',
-    }, {
-      object: 'Math',
-      property: 'pow',
-      message: 'Use the exponentiation operator (**) instead.',
-    }],
+    'no-restricted-properties': [
+      'error',
+      {
+        object: 'arguments',
+        property: 'callee',
+        message: 'arguments.callee is deprecated'
+      },
+      {
+        property: '__defineGetter__',
+        message: 'Please use Object.defineProperty instead.'
+      },
+      {
+        property: '__defineSetter__',
+        message: 'Please use Object.defineProperty instead.'
+      },
+      {
+        object: 'Math',
+        property: 'pow',
+        message: 'Use the exponentiation operator (**) instead.'
+      }
+    ],
 
     // disallow use of assignment in return statement
     'no-return-assign': 0,
@@ -818,10 +805,13 @@ module.exports = {
     'no-unmodified-loop-condition': 'off',
 
     // disallow usage of expressions in statement position
-    'no-unused-expressions': ['error', {
-      allowShortCircuit: false,
-      allowTernary: false,
-    }],
+    'no-unused-expressions': [
+      'error',
+      {
+        allowShortCircuit: false,
+        allowTernary: false
+      }
+    ],
 
     // disallow unused labels
     // http://eslint.org/docs/rules/no-unused-labels
@@ -847,7 +837,10 @@ module.exports = {
     'no-void': 'error',
 
     // disallow usage of configurable warning terms in comments: e.g. todo
-    'no-warning-comments': ['off', { terms: ['todo', 'fixme', 'xxx'], location: 'start' }],
+    'no-warning-comments': [
+      'off',
+      { terms: ['todo', 'fixme', 'xxx'], location: 'start' }
+    ],
 
     // disallow use of the with statement
     'no-with': 'error',
@@ -869,23 +862,29 @@ module.exports = {
     // require or disallow Yoda conditions
     yoda: 'error',
 
-
-
     // AIRBNB ES6:
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/es6.js
 
     // enforces no braces where they can be omitted
     // http://eslint.org/docs/rules/arrow-body-style
     // TODO: enable requireReturnForObjectLiteral?
-    'arrow-body-style': ['error', 'as-needed', {
-      requireReturnForObjectLiteral: false,
-    }],
+    'arrow-body-style': [
+      'error',
+      'as-needed',
+      {
+        requireReturnForObjectLiteral: false
+      }
+    ],
 
     // require parens in arrow function arguments
     // http://eslint.org/docs/rules/arrow-parens
-    'arrow-parens': ['error', 'as-needed', {
-      requireForBlockBody: false,
-    }],
+    'arrow-parens': [
+      'error',
+      'as-needed',
+      {
+        requireForBlockBody: false
+      }
+    ],
 
     // require space before/after arrow function's arrow
     // http://eslint.org/docs/rules/arrow-spacing
@@ -940,43 +939,60 @@ module.exports = {
 
     // disallow renaming import, export, and destructured assignments to the same name
     // http://eslint.org/docs/rules/no-useless-rename
-    'no-useless-rename': ['error', {
-      ignoreDestructuring: false,
-      ignoreImport: false,
-      ignoreExport: false,
-    }],
+    'no-useless-rename': [
+      'error',
+      {
+        ignoreDestructuring: false,
+        ignoreImport: false,
+        ignoreExport: false
+      }
+    ],
 
     // require let or const instead of var
     'no-var': 'error',
 
     // require method and property shorthand syntax for object literals
     // http://eslint.org/docs/rules/object-shorthand
-    'object-shorthand': ['error', 'always', {
-      ignoreConstructors: false,
-      avoidQuotes: true,
-    }],
+    'object-shorthand': [
+      'error',
+      'always',
+      {
+        ignoreConstructors: false,
+        avoidQuotes: true
+      }
+    ],
 
     // suggest using arrow functions as callbacks
-    'prefer-arrow-callback': ['error', {
-      allowNamedFunctions: false,
-      allowUnboundThis: true,
-    }],
+    'prefer-arrow-callback': [
+      'error',
+      {
+        allowNamedFunctions: false,
+        allowUnboundThis: true
+      }
+    ],
 
     // suggest using of const declaration for variables that are never modified after declared
-    'prefer-const': ['error', {
-      destructuring: 'any',
-      ignoreReadBeforeAssign: true,
-    }],
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'any',
+        ignoreReadBeforeAssign: true
+      }
+    ],
 
     // Prefer destructuring from arrays and objects
     // http://eslint.org/docs/rules/prefer-destructuring
     // TODO: enable
-    'prefer-destructuring': ['off', {
-      array: true,
-      object: true,
-    }, {
-      enforceForRenamedProperties: false,
-    }],
+    'prefer-destructuring': [
+      'off',
+      {
+        array: true,
+        object: true
+      },
+      {
+        enforceForRenamedProperties: false
+      }
+    ],
 
     // disallow parseInt() in favor of binary, octal, and hexadecimal literals
     // http://eslint.org/docs/rules/prefer-numeric-literals
@@ -1009,11 +1025,14 @@ module.exports = {
 
     // import sorting
     // http://eslint.org/docs/rules/sort-imports
-    'sort-imports': ['off', {
-      ignoreCase: false,
-      ignoreMemberSort: false,
-      memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-    }],
+    'sort-imports': [
+      'off',
+      {
+        ignoreCase: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
+      }
+    ],
 
     // require a Symbol description
     // http://eslint.org/docs/rules/symbol-description
@@ -1026,10 +1045,6 @@ module.exports = {
     // enforce spacing around the * in yield* expressions
     // http://eslint.org/docs/rules/yield-star-spacing
     'yield-star-spacing': ['error', 'after'],
-
-
-
-
 
     // AIRBNB IMPORTS:
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/imports.js
@@ -1070,26 +1085,29 @@ module.exports = {
     // Forbid the use of extraneous packages
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
     // paths are treated both as absolute paths, and relative to process.cwd()
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: [
-        'test/**', // tape, common npm pattern
-        'tests/**', // also common npm pattern
-        'spec/**', // mocha, rspec-like pattern
-        '**/__tests__/**', // jest pattern
-        'test.js', // repos with a single test file
-        'test-*.js', // repos with multiple top-level test files
-        '**/*.test.js', // tests where the extension denotes that it is a test
-        'webpack/**/*.js', // webpack config
-        'webpack/**/*.js', // webpack config
-        '**/rollup.config.js', // rollup config
-        '**/gulpfile.js', // gulp config
-        '**/gulpfile.*.js', // gulp config
-        '**/Gruntfile', // grunt config
-      ],
-      optionalDependencies: true,
-      devDependencies: true,
-      peerDependencies: true,
-    }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          'test/**', // tape, common npm pattern
+          'tests/**', // also common npm pattern
+          'spec/**', // mocha, rspec-like pattern
+          '**/__tests__/**', // jest pattern
+          'test.js', // repos with a single test file
+          'test-*.js', // repos with multiple top-level test files
+          '**/*.test.js', // tests where the extension denotes that it is a test
+          'webpack/**/*.js', // webpack config
+          'webpack/**/*.js', // webpack config
+          '**/rollup.config.js', // rollup config
+          '**/gulpfile.js', // gulp config
+          '**/gulpfile.*.js', // gulp config
+          '**/Gruntfile' // grunt config
+        ],
+        optionalDependencies: true,
+        devDependencies: true,
+        peerDependencies: true
+      }
+    ],
 
     // Forbid mutable exports
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md
@@ -1132,20 +1150,34 @@ module.exports = {
 
     // Ensure consistent use of file extension within the import path
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      jsx: 'never',
-      styl: 'never',
-      css: 'never',
-    }],
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        jsx: 'never',
+        styl: 'never',
+        css: 'never'
+      }
+    ],
 
     // Enforce a convention in module import order
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
     // TODO: enable?
-    'import/order': ['off', {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      'newlines-between': 'never',
-    }],
+    'import/order': [
+      'off',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index'
+        ],
+        'newlines-between': 'never'
+      }
+    ],
 
     // Require a newline after the last import/require in a group
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
@@ -1173,9 +1205,12 @@ module.exports = {
 
     // prevent importing the submodules of other modules
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-internal-modules.md
-    'import/no-internal-modules': ['off', {
-      allow: [],
-    }],
+    'import/no-internal-modules': [
+      'off',
+      {
+        allow: []
+      }
+    ],
 
     // Warn if a module could be mistakenly parsed as a script by a consumer
     // leveraging Unambiguous JavaScript Grammar
@@ -1197,12 +1232,6 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-default.md
     'import/no-named-default': 'error',
 
-
-
-
-
-
-
     // AIRBNB STYLE:
     // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js
 
@@ -1221,18 +1250,22 @@ module.exports = {
 
     // enforce or disallow capitalization of the first letter of a comment
     // http://eslint.org/docs/rules/capitalized-comments
-    'capitalized-comments': ['off', 'never', {
-      line: {
-        ignorePattern: '.*',
-        ignoreInlineComments: true,
-        ignoreConsecutiveComments: true,
-      },
-      block: {
-        ignorePattern: '.*',
-        ignoreInlineComments: true,
-        ignoreConsecutiveComments: true,
-      },
-    }],
+    'capitalized-comments': [
+      'off',
+      'never',
+      {
+        line: {
+          ignorePattern: '.*',
+          ignoreInlineComments: true,
+          ignoreConsecutiveComments: true
+        },
+        block: {
+          ignorePattern: '.*',
+          ignoreInlineComments: true,
+          ignoreConsecutiveComments: true
+        }
+      }
+    ],
 
     // enforce spacing before and after comma
     'comma-spacing': ['error', { before: false, after: true }],
@@ -1256,9 +1289,13 @@ module.exports = {
     // requires function names to match the name of the variable or property to which they are
     // assigned
     // http://eslint.org/docs/rules/func-name-matching
-    'func-name-matching': ['off', 'always', {
-      includeCommonJSModuleExports: false
-    }],
+    'func-name-matching': [
+      'off',
+      'always',
+      {
+        includeCommonJSModuleExports: false
+      }
+    ],
 
     // require function expressions to have a name
     // http://eslint.org/docs/rules/func-names
@@ -1282,23 +1319,27 @@ module.exports = {
 
     // this option sets a specific tab width for your code
     // http://eslint.org/docs/rules/indent
-    indent: ['error', 2, {
-      SwitchCase: 1,
-      VariableDeclarator: 1,
-      outerIIFEBody: 1,
-      // MemberExpression: null,
-      // CallExpression: {
+    indent: [
+      'error',
+      2,
+      {
+        SwitchCase: 1,
+        VariableDeclarator: 1,
+        outerIIFEBody: 1,
+        // MemberExpression: null,
+        // CallExpression: {
         // parameters: null,
-      // },
-      FunctionDeclaration: {
-        parameters: 1,
-        body: 1
-      },
-      FunctionExpression: {
-        parameters: 1,
-        body: 1
+        // },
+        FunctionDeclaration: {
+          parameters: 1,
+          body: 1
+        },
+        FunctionExpression: {
+          parameters: 1,
+          body: 1
+        }
       }
-    }],
+    ],
 
     // specify whether double or single quotes should be used in JSX attributes
     // http://eslint.org/docs/rules/jsx-quotes
@@ -1308,24 +1349,30 @@ module.exports = {
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
 
     // require a space before & after certain keywords
-    'keyword-spacing': ['error', {
-      before: true,
-      after: true,
-      overrides: {
-        return: { after: true },
-        throw: { after: true },
-        case: { after: true }
+    'keyword-spacing': [
+      'error',
+      {
+        before: true,
+        after: true,
+        overrides: {
+          return: { after: true },
+          throw: { after: true },
+          case: { after: true }
+        }
       }
-    }],
+    ],
 
     // enforce position of line comments
     // http://eslint.org/docs/rules/line-comment-position
     // TODO: enable?
-    'line-comment-position': ['off', {
-      position: 'above',
-      ignorePattern: '',
-      applyDefaultPatterns: true,
-    }],
+    'line-comment-position': [
+      'off',
+      {
+        position: 'above',
+        ignorePattern: '',
+        applyDefaultPatterns: true
+      }
+    ],
 
     // disallow mixed 'LF' and 'CRLF' as linebreaks
     // http://eslint.org/docs/rules/linebreak-style
@@ -1336,31 +1383,42 @@ module.exports = {
 
     // require or disallow newlines around directives
     // http://eslint.org/docs/rules/lines-around-directive
-    'lines-around-directive': ['error', {
-      before: 'always',
-      after: 'always',
-    }],
+    'lines-around-directive': [
+      'error',
+      {
+        before: 'always',
+        after: 'always'
+      }
+    ],
 
     // specify the maximum depth that blocks can be nested
     'max-depth': ['warn', 5],
 
     // specify the maximum length of a line in your program
     // http://eslint.org/docs/rules/max-len
-    'max-len': ['error', 120, 2, {
-      ignoreUrls: true,
-      ignoreComments: true,
-      ignoreRegExpLiterals: true,
-      ignoreStrings: true,
-      ignoreTemplateLiterals: true,
-    }],
+    'max-len': [
+      'error',
+      120,
+      2,
+      {
+        ignoreUrls: true,
+        ignoreComments: true,
+        ignoreRegExpLiterals: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true
+      }
+    ],
 
     // specify the max number of lines in a file
     // http://eslint.org/docs/rules/max-lines
-    'max-lines': ['warn', {
-      max: 300,
-      skipBlankLines: true,
-      skipComments: true
-    }],
+    'max-lines': [
+      'warn',
+      {
+        max: 300,
+        skipBlankLines: true,
+        skipComments: true
+      }
+    ],
 
     // specify the maximum depth callbacks can be nested
     'max-nested-callbacks': 'off',
@@ -1369,14 +1427,14 @@ module.exports = {
     'max-params': ['warn', 6],
 
     // specify the maximum number of statement allowed in a function
-    'max-statements': ['warn', { "max": 20 }, { "ignoreTopLevelFunctions": true }],
+    'max-statements': ['warn', { max: 20 }, { ignoreTopLevelFunctions: true }],
 
     // restrict the number of statements per line
     // http://eslint.org/docs/rules/max-statements-per-line
     'max-statements-per-line': ['warn', { max: 2 }],
 
     // specify the maximum cyclomatic complexity allowed in a program
-    "complexity": ["warn", { "max": 6 }],
+    complexity: ['warn', { max: 6 }],
 
     // require multiline ternary
     // http://eslint.org/docs/rules/multiline-ternary
@@ -1384,12 +1442,15 @@ module.exports = {
     'multiline-ternary': ['off', 'never'],
 
     // require a capital letter for constructors
-    'new-cap': ['error', {
-      newIsCap: true,
-      newIsCapExceptions: [],
-      capIsNew: false,
-      capIsNewExceptions: ['Immutable.Map', 'Immutable.Set', 'Immutable.List'],
-    }],
+    'new-cap': [
+      'error',
+      {
+        newIsCap: true,
+        newIsCapExceptions: [],
+        capIsNew: false,
+        capIsNewExceptions: ['Immutable.Map', 'Immutable.Set', 'Immutable.List']
+      }
+    ],
 
     // disallow the omission of parentheses when invoking a constructor with no arguments
     // http://eslint.org/docs/rules/new-parens
@@ -1426,16 +1487,19 @@ module.exports = {
 
     // disallow un-paren'd mixes of different operators
     // http://eslint.org/docs/rules/no-mixed-operators
-    'no-mixed-operators': ['error', {
-      groups: [
-        ['+', '-', '*', '/', '%', '**'],
-        ['&', '|', '^', '~', '<<', '>>', '>>>'],
-        ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-        ['&&', '||'],
-        ['in', 'instanceof']
-      ],
-      allowSamePrecedence: false
-    }],
+    'no-mixed-operators': [
+      'error',
+      {
+        groups: [
+          ['+', '-', '*', '/', '%', '**'],
+          ['&', '|', '^', '~', '<<', '>>', '>>>'],
+          ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+          ['&&', '||'],
+          ['in', 'instanceof']
+        ],
+        allowSamePrecedence: false
+      }
+    ],
 
     // disallow mixed spaces and tabs for indentation
     'no-mixed-spaces-and-tabs': 'error',
@@ -1464,7 +1528,7 @@ module.exports = {
       //'ForInStatement',
       'ForOfStatement',
       'LabeledStatement',
-      'WithStatement',
+      'WithStatement'
     ],
 
     // disallow space between function identifier and application
@@ -1497,16 +1561,22 @@ module.exports = {
     // enforce line breaks between braces
     // http://eslint.org/docs/rules/object-curly-newline
     // TODO: enable once https://github.com/eslint/eslint/issues/6488 is resolved
-    'object-curly-newline': ['off', {
-      ObjectExpression: { minProperties: 0, multiline: true },
-      ObjectPattern: { minProperties: 0, multiline: true }
-    }],
+    'object-curly-newline': [
+      'off',
+      {
+        ObjectExpression: { minProperties: 0, multiline: true },
+        ObjectPattern: { minProperties: 0, multiline: true }
+      }
+    ],
 
     // enforce "same line" or "multiple line" on object properties.
     // http://eslint.org/docs/rules/object-property-newline
-    'object-property-newline': ['error', {
-      allowMultiplePropertiesPerLine: true,
-    }],
+    'object-property-newline': [
+      'error',
+      {
+        allowMultiplePropertiesPerLine: true
+      }
+    ],
 
     // allow just one var statement per function
     'one-var': ['error', 'never'],
@@ -1527,7 +1597,11 @@ module.exports = {
 
     // require quotes around object literal property names
     // http://eslint.org/docs/rules/quote-props.html
-    'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: false }],
+    'quote-props': [
+      'error',
+      'as-needed',
+      { keywords: false, unnecessary: true, numbers: false }
+    ],
 
     // specify whether double or single quotes should be used
     quotes: ['error', 'single', { avoidEscape: true }],
@@ -1553,11 +1627,14 @@ module.exports = {
 
     // require or disallow space before function opening parenthesis
     // http://eslint.org/docs/rules/space-before-function-paren
-    'space-before-function-paren': ['error', {
-      anonymous: 'always',
-      named: 'never',
-      asyncArrow: 'always'
-    }],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
 
     // require or disallow spaces inside parentheses
     'space-in-parens': ['error', 'never'],
@@ -1567,26 +1644,32 @@ module.exports = {
 
     // Require or disallow spaces before/after unary operators
     // http://eslint.org/docs/rules/space-unary-ops
-    'space-unary-ops': ['error', {
-      words: true,
-      nonwords: false,
-      overrides: {
-      },
-    }],
+    'space-unary-ops': [
+      'error',
+      {
+        words: true,
+        nonwords: false,
+        overrides: {}
+      }
+    ],
 
     // require or disallow a space immediately following the // or /* in a comment
     // http://eslint.org/docs/rules/spaced-comment
-    'spaced-comment': ['error', 'always', {
-      line: {
-        exceptions: ['-', '+'],
-        markers: ['=', '!'], // space here to support sprockets directives
-      },
-      block: {
-        exceptions: ['-', '+'],
-        markers: ['=', '!'], // space here to support sprockets directives
-        balanced: false,
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        line: {
+          exceptions: ['-', '+'],
+          markers: ['=', '!'] // space here to support sprockets directives
+        },
+        block: {
+          exceptions: ['-', '+'],
+          markers: ['=', '!'], // space here to support sprockets directives
+          balanced: false
+        }
       }
-    }],
+    ],
 
     // require or disallow the Unicode Byte Order Mark
     // http://eslint.org/docs/rules/unicode-bom
@@ -1594,5 +1677,6 @@ module.exports = {
 
     // require regex literals to be wrapped in parentheses
     'wrap-regex': 'off',
+    'consistent-return': 1
   }
 }
