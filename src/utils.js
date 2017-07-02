@@ -81,7 +81,7 @@ export const setStatus = (status, context, description, success) => {
     })
     .catch(err => {
       if (err) {
-        console.error(`${context}: Error creating status`, err.message)
+        console.error(`${context}: Error creating status (catch)`, err.message)
       }
     })
 

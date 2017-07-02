@@ -15,15 +15,30 @@ export default status => {
     return console.log('JEST: No Tests Yet (Pass)'.blue)
   }
 
-  const regex = /Tests:.+ (\d+) passed, (\d+) total/
-  const [passedCount, testCount] = regex
-    .exec(stderr)
-    .slice(1, 3)
-    .map(num => parseInt(num))
+  const hasSkipped = /Tests:.+ (\d+) skipped/.test(stderr)
 
-  const description = `${passedCount} passed, ${testCount} total`
-  const success = passedCount === testCount
-  setStatus(status, 'Jest Tests', description, success)
+  if (hasSkipped) {
+    const regex = /Tests:.+ (\d+) skipped, (\d+) passed, (\d+) total/
+    const [skippedCount, passedCount, testCount] = regex
+      .exec(stderr)
+      .slice(1, 4)
+      .map(num => parseInt(num))
+
+    const description = `${passedCount} passed, ${testCount} total (${skippedCount} skipped)`
+    const success = passedCount === testCount
+    setStatus(status, 'Jest Tests', description, success)
+  }
+  else {
+    const regex = /Tests:.+ (\d+) passed, (\d+) total/
+    const [passedCount, testCount] = regex
+      .exec(stderr)
+      .slice(1, 3)
+      .map(num => parseInt(num))
+
+    const description = `${passedCount} passed, ${testCount} total`
+    const success = passedCount === testCount
+    setStatus(status, 'Jest Tests', description, success)
+  }
 
   // colored logging
   const log = stderr
