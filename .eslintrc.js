@@ -1677,6 +1677,7 @@ module.exports = {
 
     // require regex literals to be wrapped in parentheses
     'wrap-regex': 'off',
-    'consistent-return': 1
+    'consistent-return': 1,
+    'import/first': 1
   }
 }
