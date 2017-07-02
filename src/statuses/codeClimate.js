@@ -1,4 +1,3 @@
-require('colors')
 const exec = require('child_process').execSync
 
 export default ({ CODECLIMATE_REPO_TOKEN }) => {

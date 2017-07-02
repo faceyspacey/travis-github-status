@@ -1,4 +1,3 @@
-require('colors')
 const exec = require('child_process').execSync
 const { setStatus } = require('../utils')
 const eslint = require('eslint')

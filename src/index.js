@@ -10,6 +10,8 @@ import {
 
 import { shouldSet, getStatus } from './utils'
 
+require('colors')
+
 if (process.env.NODE_ENV !== 'test') {
   const status = getStatus(process.env)
 

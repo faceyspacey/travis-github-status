@@ -1,4 +1,3 @@
-require('colors')
 const spawn = require('child_process').spawnSync
 const { setStatus } = require('../utils')
 
