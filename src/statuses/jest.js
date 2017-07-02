@@ -25,7 +25,7 @@ export default status => {
       .map(num => parseInt(num))
 
     const description = `${passedCount} passed, ${testCount} total (${skippedCount} skipped)`
-    const success = passedCount === testCount
+    const success = passedCount === testCount - skippedCount
     setStatus(status, 'Jest Tests', description, success)
   }
   else {

@@ -93,4 +93,4 @@ We use [commitizen](https://github.com/commitizen/cz-cli), so run `npm run cm` t
 
 ### Tests
 Yea, it's pretty much self-testing. It runs itself in the CI server (Travis), and if it can't run itself, it's failing,
-but feel free to add some official unit tests and perhaps breakup the individual functions into individual files.
+but feel free to add some official unit tests.
