@@ -18,7 +18,7 @@
   "scripts": {
     "start": "babel-node src/index.js lint flow jest codeclimate",
     "start:prod": "yarn run prepublish && node dist/index.js lint flow jest codeclimate",
-    "prepublish": "yarn run clean && yarn run build",
+    "prepublish": "yarn run snyk-protect && yarn run clean && yarn run build",
     "build": "babel src -d dist",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "jest",
@@ -27,7 +27,8 @@
     "clean": "rimraf dist && mkdir dist",
     "precommit": "lint-staged --verbose && npm test",
     "cm": "git-cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -67,7 +68,7 @@
     "colors": "^1.1.2",
     "github": "^9.2.0",
     "node-fetch": "^1.7.1",
-    "snyk": "^1.29.0"
+    "snyk": "^1.316.2"
   },
   "peerDependencies": {
     "eslint": "*",
@@ -91,5 +92,6 @@
       "eslint --fix",
       "git add"
     ]
-  }
+  },
+  "snyk": true
 }
