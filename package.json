@@ -60,7 +60,7 @@
     "lint-staged": "^3.4.0",
     "prettier": "^1.2.2",
     "rimraf": "^2.6.1",
-    "semantic-release": "^6.3.2"
+    "semantic-release": "^17.2.3"
   },
   "dependencies": {
     "codeclimate-test-reporter": "^0.4.1",
