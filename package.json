@@ -67,7 +67,7 @@
     "colors": "^1.1.2",
     "github": "^9.2.0",
     "node-fetch": "^1.7.1",
-    "snyk": "^1.29.0"
+    "snyk": "^1.685.0"
   },
   "peerDependencies": {
     "eslint": "*",
