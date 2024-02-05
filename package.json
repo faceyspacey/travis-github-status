@@ -63,9 +63,9 @@
     "semantic-release": "^6.3.2"
   },
   "dependencies": {
-    "codeclimate-test-reporter": "^0.4.1",
+    "codeclimate-test-reporter": "^0.5.1",
     "colors": "^1.1.2",
-    "github": "^9.2.0",
+    "github": "^14.0.0",
     "node-fetch": "^1.7.1",
     "snyk": "^1.29.0"
   },
